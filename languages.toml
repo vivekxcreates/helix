@@ -48,7 +48,7 @@ filetypes = [
   "javascriptreact",
   "astro",
   "eruby",
-  "htmlangular"
+  "htmlangular",
   "htmldjango",
   "less",
   "pug",
