@@ -57,10 +57,7 @@ filetypes = [
   "templ",
   "vue",
 ]
-settings.includeLanguages = {
-  "typescript" = "typescriptreact",
-  "javascript" = "javascriptreact"
-}
+
 
 # Install with: npm install -g @tailwindcss/language-server
 [language-server.tailwindcss]
