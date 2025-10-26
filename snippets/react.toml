@@ -1,0 +1,94 @@
+# React Snippets
+
+# React Arrow Function Component Export (rafce)
+snippet rafce "React Arrow Function Component Export" {
+  import React from 'react';
+
+  const ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}}
+  = () => {
+    return (
+      <div>${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}}</div>
+    );
+  };
+
+  export default ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}};
+}
+
+# React Arrow Function Component (rfc)
+snippet rfc "React Function Component" {
+  const ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}} = () => {
+    return (
+      <div>${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}}</div>
+    );
+  };
+}
+
+# React useEffect Hook
+snippet usee "React useEffect Hook" {
+  useEffect(() => {
+    ${1:effect}
+    return () => {
+      ${2:cleanup}
+    };
+  }, [${3:dependencyArray}]);
+}
+
+# React useState Hook
+snippet usest "React useState Hook" {
+  const [${1:state}, set${1/(^\w)/\u$1/}] = useState(${2:initialValue});
+}
+
+# React useRef Hook
+snippet useref "React useRef Hook" {
+  const ${1:refName} = useRef(${2:initialValue});
+}
+
+# React Context
+snippet rcontext "React Context" {
+  const ${1:ContextName} = createContext();
+
+  const ${1:ContextName}Provider = ({ children }) => {
+    ${2:/* context value and logic */}
+    
+    return (
+      <${1:ContextName}.Provider value={${3:value}}>
+        {children}
+      </${1:ContextName}.Provider>
+    );
+  };
+
+  export { ${1:ContextName}, ${1:ContextName}Provider };
+}
+
+# React Router Link
+snippet rlink "React Router Link" {
+  <Link to="${1:/path}">
+    ${2:Link Text}
+  </Link>
+}
+
+# React PropTypes
+snippet ptypes "React PropTypes" {
+  ${1:ComponentName}.propTypes = {
+    ${2:propName}: PropTypes.${3:type}${4:.isRequired},
+  };
+}
+
+# React Component with Props
+snippet rcp "React Component with Props" {
+  interface ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}}Props {
+    ${2:prop1}: string;
+    ${3:prop2}?: number;
+  }
+
+  const ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}} = ({
+    ${2:prop1},
+    ${3:prop2},
+  }: ${1:${TM_FILENAME_BASE/(?:^[A-Z]|[-_]([A-Za-z]))/\U$1/g}}Props) => {
+    return (
+      <div>
+        ${4}
+      </div>
+    );
+  };
+}

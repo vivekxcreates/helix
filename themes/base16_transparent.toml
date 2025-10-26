@@ -1,0 +1,116 @@
+# Author: GreasySlug <9619abgoni@gmail.com>
+# This theme is base on base16_theme(Author: NNB <nnbnh@protonmail.com>)
+
+# UI Colors
+"ui.background" = { bg = "none" }  # Transparent background
+"ui.background.separator" = { fg = "#45475a" }  # Overlay1
+"ui.text" = { fg = "#cdd6f4" }  # Text
+"ui.text.focus" = { fg = "#f5e0dc" }  # Text (focused)
+"ui.menu" = { fg = "#cdd6f4" }  # Text
+"ui.menu.selected" = { bg = "#45475a", fg = "#f5e0dc" }  # Overlay1 with Text
+"ui.menu.scroll" = { fg = "#6c7086" }  # Overlay1
+"ui.linenr" = { fg = "#6c7086" }  # Overlay1
+"ui.linenr.selected" = { fg = "#f5e0dc", modifiers = ["bold"] }  # Text with bold
+"ui.popup" = { bg = "#1e1e2e", fg = "#cdd6f4" }  # Base with Text
+"ui.window" = { fg = "#6c7086" }  # Overlay1
+"ui.selection" = { bg = "#45475a" }  # Overlay1
+"ui.statusline" = { fg = "#cdd6f4", bg = "#1e1e2e" }  # Text on Base
+"ui.statusline.inactive" = { fg = "#6c7086", bg = "#1e1e2e" }  # Overlay1 on Base
+"ui.statusline.normal" = { fg = "#1e1e2e", bg = "#89b4fa" }  # Base on Blue
+"ui.statusline.insert" = { fg = "#1e1e2e", bg = "#a6e3a1" }  # Base on Green
+"ui.statusline.select" = { fg = "#1e1e2e", bg = "#f5c2e7" }  # Base on Pink
+"ui.help" = { fg = "#6c7086" }  # Overlay1
+"ui.cursor" = { fg = "#f5e0dc", bg = "#6c7086" }  # Text on Overlay1
+"ui.cursor.match" = { fg = "#f9e2af", underline = { color = "#f9e2af", style = "line" } }  # Yellow with underline
+"ui.cursor.primary" = { modifiers = ["reversed", "slow_blink"] }
+"ui.cursor.secondary" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { underline = { color = "#6c7086", style = "line" } }  # Overlay1 underline
+"ui.cursorline.secondary" = { underline = { color = "#6c7086", style = "line" } }  # Overlay1 underline
+"ui.cursorcolumn.primary" = { bg = "#313244" }  # Surface0
+"ui.cursorcolumn.secondary" = { bg = "#313244" }  # Surface0
+"ui.virtual.ruler" = { bg = "#313244" }  # Surface0
+"ui.virtual.whitespace" = { fg = "#6c7086" }  # Overlay1
+"ui.virtual.indent-guide" = { fg = "#45475a" }  # Overlay1
+"ui.virtual.inlay-hint" = { fg = "#cdd6f4", bg = "#313244" }  # Text on Surface0
+"ui.virtual.inlay-hint.parameter" = { fg = "#cdd6f4", bg = "#313244" }  # Text on Surface0
+"ui.virtual.inlay-hint.type" = { fg = "#89b4fa", bg = "#313244" }  # Blue on Surface0
+"ui.virtual.wrap" = { fg = "#6c7086" }  # Overlay1
+"ui.virtual.jump-label" = { fg = "#89b4fa", modifiers = ["bold", "underlined"] }  # Blue with underline
+
+# Catppuccin-inspired syntax colors
+"variable" = { fg = "#f5e0dc" }  # Text
+"variable.builtin" = { fg = "#f38ba8" }  # Red
+"variable.parameter" = { fg = "#f5c2e7" }  # Pink
+"variable.other.member" = { fg = "#f38ba8" }  # Red
+
+"constant" = { fg = "#f9e2af" }  # Yellow
+"constant.numeric" = { fg = "#fab387" }  # Peach
+"constant.character.escape" = { fg = "#a6e3a1" }  # Green
+"constant.builtin" = { fg = "#f9e2af" }  # Yellow
+
+"string" = { fg = "#a6e3a1" }  # Green
+"string.regexp" = { fg = "#f5c2e7" }  # Pink
+"string.special" = { fg = "#f9e2af" }  # Yellow
+"string.special.symbol" = { fg = "#89b4fa" }  # Blue
+"string.special.url" = { fg = "#89b4fa", underline = { style = "line" } }  # Blue with underline
+
+"type" = { fg = "#89b4fa" }  # Blue
+"type.builtin" = { fg = "#89b4fa", modifiers = ["italic"] }  # Blue italic
+"type.definition" = { fg = "#89b4fa", modifiers = ["bold"] }  # Blue bold
+
+"function" = { fg = "#89b4fa" }  # Blue
+"function.builtin" = { fg = "#89b4fa", modifiers = ["bold"] }  # Blue bold
+"function.method" = { fg = "#89b4fa" }  # Blue
+"function.special" = { fg = "#f5c2e7" }  # Pink
+
+"keyword" = { fg = "#cba6f7" }  # Mauve
+"keyword.control" = { fg = "#f38ba8" }  # Red
+"keyword.operator" = { fg = "#89b4fa" }  # Blue
+"keyword.return" = { fg = "#f38ba8" }  # Red
+"keyword.function" = { fg = "#cba6f7" }  # Mauve
+"keyword.import" = { fg = "#f9e2af" }  # Yellow
+
+"operator" = { fg = "#89b4fa" }  # Blue
+
+"tag" = { fg = "#f38ba8" }  # Red
+"tag.attribute" = { fg = "#89b4fa" }  # Blue
+"tag.delimiter" = { fg = "#6c7086" }  # Overlay1
+
+"namespace" = { fg = "#cba6f7" }  # Mauve
+"attribute" = { fg = "#89b4fa" }  # Blue
+"label" = { fg = "#f9e2af" }  # Yellow
+"punctuation" = { fg = "#cdd6f4" }  # Text
+"punctuation.delimiter" = { fg = "#6c7086" }  # Overlay1
+
+"comment" = { fg = "#6c7086", modifiers = ["italic"] }  # Overlay1 italic
+
+"markup.heading" = { fg = "#89b4fa" }  # Blue
+"markup.list" = { fg = "#f38ba8" }  # Red
+"markup.bold" = { fg = "#f9e2af", modifiers = ["bold"] }  # Yellow bold
+"markup.italic" = { fg = "#cba6f7", modifiers = ["italic"] }  # Mauve italic
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "yellow", underline = { color = "yellow", style = "line"} }
+"markup.link.text" = "light-red"
+"markup.quote" = { fg = "#a6e3a1" }  # Green
+"markup.raw" = { fg = "#a6e3a1" }  # Green
+"markup.normal" = { fg = "blue" }
+"markup.insert" = { fg = "green" }
+"markup.select" = { fg = "magenta" }
+
+"diff.plus" = { fg = "#a6e3a1" }  # Green
+"diff.delta" = { fg = "#89b4fa" }  # Blue
+"diff.delta.moved" = { fg = "#6c7086" }  # Overlay1
+"diff.minus" = { fg = "#f38ba8" }  # Red
+
+"ui.gutter" = { fg = "#6c7086" }  # Overlay1
+"info" = { fg = "#89b4fa" }  # Blue
+"hint" = { fg = "#cdd6f4" }  # Text
+"debug" = { fg = "#cdd6f4" }  # Text
+"warning" = { fg = "#f9e2af" }  # Yellow
+"error" = { fg = "#f38ba8" }  # Red
+
+"diagnostic.info" = { underline = { color = "light-blue", style = "dotted" } }
+"diagnostic.hint" = { underline = { color = "light-gray", style = "double_line" } }
+"diagnostic.debug" = { underline ={ color ="light-gray", style = "dashed" } }
+"diagnostic.warning" = { underline = { color = "light-yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color ="light-red", style = "curl" } }

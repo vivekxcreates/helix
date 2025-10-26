@@ -1,0 +1,138 @@
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio", "--tsserver-path", "tsserver"]
+
+[language-server.typescript-language-server.config]
+completion = { completeFunctionCalls = true, completeUnused = true, jsx.completeFunctionCalls = true }
+[language-server.typescript-language-server.config.jsx]
+reactNamespace = "React"
+
+[language-server.typescript-language-server.config.typescript]
+preferences = { importModuleSpecifier = "relative", importModuleSpecifierEnding = "js", includePackageJsonAutoImports = "auto" }
+
+[language-server.typescript-language-server.config.javascript]
+preferences = { importModuleSpecifier = "relative", importModuleSpecifierEnding = "js", includePackageJsonAutoImports = "auto" }
+
+[language-server.emmet-ls]
+command = "emmet-ls"
+args = ["--stdio"]
+
+[language-server.emmet-ls.config]
+filetypes = ["html", "css", "scss", "typescriptreact", "javascriptreact"]
+init_options = {}
+[language-server.emmet-ls.config.settings]
+includeLanguages = { "typescript" = "typescriptreact", "javascript" = "javascriptreact" }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+# Install with: npm install -g @tailwindcss/language-server
+[language-server.tailwindcss]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[language-server.eslint]
+command = "eslint_d"
+args = ["--stdio"]
+
+[language-server.prettier]
+command = "prettierd"
+args = ["--stdio"]
+
+[[language]]
+name = "typescript"
+scope = "source.typescript"
+file-types = ["ts"]
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [ 
+  { name = "typescript-language-server" }, 
+  { name = "eslint" },
+  { name = "tailwindcss" }
+]
+roots = ["package.json", "tsconfig.json"]
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs", "cjs"]
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [ 
+  { name = "typescript-language-server" }, 
+  { name = "eslint" },
+  { name = "tailwindcss" }
+]
+roots = ["package.json", "jsconfig.json"]
+indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+file-types = ["jsx"]
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [
+  { name = "typescript-language-server" },
+  { name = "eslint" },
+  { name = "emmet-ls" },
+  { name = "tailwindcss" }
+]
+roots = ["package.json", "jsconfig.json"]
+indent = { tab-width = 2, unit = "  " }
+auto-pairs = { "<" = ">", "(" = ")", "[" = "]", "{" = "}", "\"" = "\"", "'" = "'", '`' = '`' }
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [
+  { name = "typescript-language-server" },
+  { name = "eslint" },
+  { name = "emmet-ls" },
+  { name = "tailwindcss" }
+]
+roots = ["package.json", "tsconfig.json"]
+indent = { tab-width = 2, unit = "  " }
+auto-pairs = { "<" = ">", "(" = ")", "[" = "]", "{" = "}", "\"" = "\"", "'" = "'", '`' = '`' }
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+auto-format = true
+formatter = { command = "rustfmt" }
+language-servers = [ { name = "rust-analyzer" } ]
+roots = ["Cargo.toml"]
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "css"
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [ 
+  { name = "tailwindcss" },
+  { name = "prettier" }
+]
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+file-types = ["html", "htm"]
+auto-format = true
+formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
+language-servers = [ 
+  { name = "tailwindcss" },
+  { name = "emmet-ls" }
+]
+indent = { tab-width = 2, unit = "  " }
+[language.auto-pairs]
+'<' = '>'
+'(' = ')'
+'[' = ']'
+'"' = '"'
+"'" = "'"
+'`' = '`'
