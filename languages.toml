@@ -58,7 +58,6 @@ filetypes = [
   "vue",
 ]
 
-
 # Install with: npm install -g @tailwindcss/language-server
 [language-server.tailwindcss]
 command = "tailwindcss-language-server"
@@ -97,6 +96,7 @@ file-types = ["ts"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
 language-servers = [
+  { name = "emmet-ls" },
   { name = "typescript-language-server" },
   { name = "eslint" },
   { name = "tailwindcss" }
@@ -111,6 +111,7 @@ file-types = ["js", "mjs", "cjs"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
 language-servers = [
+  { name = "emmet-ls" },
   { name = "typescript-language-server" },
   { name = "vscode-eslint-language-server" },
   { name = "tailwindcss" }
@@ -125,9 +126,9 @@ file-types = ["jsx"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
 language-servers = [
+  { name = "emmet-ls" },
   { name = "typescript-language-server" },
   { name = "eslint" },
-  { name = "emmet-ls" },
   { name = "tailwindcss" }
 ]
 roots = ["package.json", "jsconfig.json"]
@@ -141,9 +142,9 @@ file-types = ["tsx"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
 language-servers = [
+  { name = "emmet-ls" },
   { name = "typescript-language-server" },
   { name = "vscode-eslint-language-server" },
-  { name = "emmet-ls" },
   { name = "tailwindcss" }
 ]
 roots = ["package.json", "tsconfig.json"]
