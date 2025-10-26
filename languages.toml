@@ -1,39 +1,93 @@
 [language-server.typescript-language-server]
 command = "typescript-language-server"
-args = ["--stdio", "--tsserver-path", "tsserver"]
+args = ["--stdio"]
+config.hostInfo = "helix"
 
-[language-server.typescript-language-server.config]
-completion = { completeFunctionCalls = true, completeUnused = true, jsx.completeFunctionCalls = true }
-[language-server.typescript-language-server.config.jsx]
-reactNamespace = "React"
+[language-server.typescript-language-server.config.typescript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
 
-[language-server.typescript-language-server.config.typescript]
-preferences = { importModuleSpecifier = "relative", importModuleSpecifierEnding = "js", includePackageJsonAutoImports = "auto" }
+[language-server.typescript-language-server.config.javascript.inlayHints]
+includeInlayEnumMemberValueHints = true
+includeInlayFunctionLikeReturnTypeHints = true
+includeInlayFunctionParameterTypeHints = true
+includeInlayParameterNameHints = "all"
+includeInlayParameterNameHintsWhenArgumentMatchesName = true
+includeInlayPropertyDeclarationTypeHints = true
+includeInlayVariableTypeHints = true
 
-[language-server.typescript-language-server.config.javascript]
-preferences = { importModuleSpecifier = "relative", importModuleSpecifierEnding = "js", includePackageJsonAutoImports = "auto" }
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModeHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.closureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.enable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideClosureInitialization = false
+
+[language-server.rust-analyzer.config.files]
+watcher = "server"
 
 [language-server.emmet-ls]
 command = "emmet-ls"
 args = ["--stdio"]
 
 [language-server.emmet-ls.config]
-filetypes = ["html", "css", "scss", "typescriptreact", "javascriptreact"]
-init_options = {}
-[language-server.emmet-ls.config.settings]
-includeLanguages = { "typescript" = "typescriptreact", "javascript" = "javascriptreact" }
-
-[language-server.rust-analyzer]
-command = "rust-analyzer"
+filetypes = [
+  "html",
+  "css",
+  "scss",
+  "typescriptreact",
+  "javascriptreact",
+  "astro",
+  "eruby",
+  "htmlangular"
+  "htmldjango",
+  "less",
+  "pug",
+  "sass",
+  "svelte",
+  "templ",
+  "vue",
+]
+settings.includeLanguages = {
+  "typescript" = "typescriptreact",
+  "javascript" = "javascriptreact"
+}
 
 # Install with: npm install -g @tailwindcss/language-server
 [language-server.tailwindcss]
 command = "tailwindcss-language-server"
 args = ["--stdio"]
 
-[language-server.eslint]
-command = "eslint_d"
+[language-server.vscode-eslint-language-server]
+command = "vscode-eslint-language-server"
 args = ["--stdio"]
+
+[language-server.vscode-eslint-language-server.config]
+validate = "on"
+experimental = { useFlatConfig = false }
+rulesCustomizations = []
+run = "onType"
+problems = { shortenToSingleLine = false }
+nodePath = ""
+
+[language-server.vscode-eslint-language-server.config.codeAction.disableRuleComment]
+enable = true
+location = "separateLine"
+
+[language-server.vscode-eslint-language-server.config.codeAction.showDocumentation]
+enable = true
+
+[language-server.vscode-eslint-language-server.config.workingDirectory]
+mode = "location"
 
 [language-server.prettier]
 command = "prettierd"
@@ -45,8 +99,8 @@ scope = "source.typescript"
 file-types = ["ts"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
-language-servers = [ 
-  { name = "typescript-language-server" }, 
+language-servers = [
+  { name = "typescript-language-server" },
   { name = "eslint" },
   { name = "tailwindcss" }
 ]
@@ -59,9 +113,9 @@ scope = "source.js"
 file-types = ["js", "mjs", "cjs"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
-language-servers = [ 
-  { name = "typescript-language-server" }, 
-  { name = "eslint" },
+language-servers = [
+  { name = "typescript-language-server" },
+  { name = "vscode-eslint-language-server" },
   { name = "tailwindcss" }
 ]
 roots = ["package.json", "jsconfig.json"]
@@ -91,7 +145,7 @@ auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
 language-servers = [
   { name = "typescript-language-server" },
-  { name = "eslint" },
+  { name = "vscode-eslint-language-server" },
   { name = "emmet-ls" },
   { name = "tailwindcss" }
 ]
@@ -105,15 +159,24 @@ scope = "source.rust"
 file-types = ["rs"]
 auto-format = true
 formatter = { command = "rustfmt" }
-language-servers = [ { name = "rust-analyzer" } ]
-roots = ["Cargo.toml"]
+language-servers = [ "rust-analyzer" ]
 indent = { tab-width = 4, unit = "    " }
+injection-regex = "rs|rust"
+roots = ["Cargo.toml", "Cargo.lock"]
+shebangs = ["rust-script", "cargo"]
+comment-tokens = ["//", "///", "//!"]
+persistent-diagnostic-sources = ["rustc", "clippy"]
+block-comment-tokens = [
+  { start = "/*", end = "*/" },
+  { start = "/**", end = "*/" },
+  { start = "/*!", end = "*/" },
+]
 
 [[language]]
 name = "css"
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
-language-servers = [ 
+language-servers = [
   { name = "tailwindcss" },
   { name = "prettier" }
 ]
@@ -124,14 +187,16 @@ scope = "text.html.basic"
 file-types = ["html", "htm"]
 auto-format = true
 formatter = { command = "prettierd", args = ["--stdin-filepath", "{file}"] }
-language-servers = [ 
+language-servers = [
   { name = "tailwindcss" },
   { name = "emmet-ls" }
 ]
 indent = { tab-width = 2, unit = "  " }
+
 [language.auto-pairs]
 '<' = '>'
 '(' = ')'
+'{' = '}'
 '[' = ']'
 '"' = '"'
 "'" = "'"
